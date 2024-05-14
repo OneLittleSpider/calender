@@ -8,23 +8,34 @@ public class Calender {
     JFrame frame;
     JPanel monthPanel;
 
+
     public Calender(){
         frame = new JFrame("Calender");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
 
         JPanel monthPanel = new JPanel();
+        monthPanel.setLayout(new BoxLayout(monthPanel,BoxLayout.X_AXIS));
         for(int i=0;i<5;i++){
-            JLabel dayLabel = new JLabel("this is a panel"+i);
-            JTextField textField = new JTextField(10 );
-            String text = textField.getText();
+            JLabel dayLabel = new JLabel("This is day"+i);
+
+            JTextField taskInput = new JTextField(10);
+            taskInput.setText("task 1=");
+            String text = taskInput.getText();
+
             boolean selected = false;
+
             JCheckBox checkBox = new JCheckBox(text, selected);
-            Day day = new Day(dayLabel, textField, checkBox);
-            monthPanel.add(day);
+            Day d1 = new Day(dayLabel, taskInput, checkBox);
+            monthPanel.add(d1);
+
+
+
         }
 
 
-        frame.add(monthPanel);
+
+        frame.add(monthPanel,BorderLayout.CENTER);
 
         frame.setSize(500, 500);
         frame.setVisible(true);
