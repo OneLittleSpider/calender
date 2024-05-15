@@ -2,18 +2,24 @@ import javax.swing.*;
 
 
 public class Day extends JPanel{
-    private JLabel day;
+    private JLabel date;
     private JTextField taskInput;
     private JCheckBox checkBox;
 
-        public Day(JLabel day, JTextField taskInput, JCheckBox checkBox) {
-        this.day=day;
+    private JButton newTaskButton;
+
+        public Day(JLabel date, JTextField taskInput, JCheckBox checkBox, JButton newTaskButton) {
+        this.date=date;
         this.taskInput=taskInput;
         this.checkBox=checkBox;
+        this.newTaskButton=newTaskButton;
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
-        add(day);
+        add(date);
         add(taskInput);
         add(checkBox);
+        add(newTaskButton);
+
 
 
 

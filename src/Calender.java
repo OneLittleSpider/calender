@@ -6,7 +6,11 @@ import java.awt.*;
 public class Calender {
 
     JFrame frame;
+    JPanel settingPanel;
     JPanel monthPanel;
+    JPanel weekPanel;
+
+
 
 
     public Calender(){
@@ -14,30 +18,48 @@ public class Calender {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
+        //setting the settingPanel, which include change size, change color,
+        JPanel settingPanel = new JPanel();
+
+        //Hi victoria, this need to be fixed. it's not working rn.
+        settingPanel.setPreferredSize(new Dimension(550, 100));
+
+
+        //setting the monthPanel, the add to frame line is at the bottom
         JPanel monthPanel = new JPanel();
-        monthPanel.setLayout(new BoxLayout(monthPanel,BoxLayout.X_AXIS));
-        for(int i=0;i<5;i++){
-            JLabel dayLabel = new JLabel("This is day"+i);
-
-            JTextField taskInput = new JTextField(10);
-            taskInput.setText("task 1=");
-            String text = taskInput.getText();
-
-            boolean selected = false;
-
-            JCheckBox checkBox = new JCheckBox(text, selected);
-            Day d1 = new Day(dayLabel, taskInput, checkBox);
-            monthPanel.add(d1);
+        monthPanel.setLayout(new BoxLayout(monthPanel,BoxLayout.Y_AXIS));
 
 
+        for(int w=0;w<4;w++){
+            JPanel weekPanel = new JPanel();
+            weekPanel.setBorder(BorderFactory. createLineBorder(Color. black));
+            for(int d=0;d<7;d++){
+                //Initializing all objects in the day panel.
+                JLabel dateLabel = new JLabel("This is day "+(w*7+d+1));
+                JTextField taskInput = new JTextField(10);
+                taskInput.setText("task =");
+                String text = taskInput.getText();
+                boolean selected = false;
+                JButton newTaskButton = new JButton("New Task");
+                JCheckBox checkBox = new JCheckBox(text, selected);
+
+                Day d1 = new Day(dateLabel, taskInput, checkBox,newTaskButton);
+                d1. setBorder(BorderFactory. createLineBorder(Color. black));
+
+                weekPanel.add(d1);
+
+
+
+            }
+            monthPanel.add(weekPanel);
 
         }
 
 
 
-        frame.add(monthPanel,BorderLayout.CENTER);
-
-        frame.setSize(500, 500);
+        frame.add(settingPanel,BorderLayout.NORTH);
+        frame.add(monthPanel,BorderLayout.SOUTH);
+        frame.setSize(1000, 800);
         frame.setVisible(true);
 
 
@@ -47,5 +69,7 @@ public class Calender {
 
     public static void main(String[] args) {
         Calender x = new Calender();
+
+
     }
 }
