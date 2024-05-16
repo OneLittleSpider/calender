@@ -9,6 +9,9 @@ public class Calender {
     JPanel settingPanel;
     JPanel monthPanel;
     JPanel weekPanel;
+    JButton setSize;
+    JButton setColor;
+
 
 
 
@@ -21,8 +24,14 @@ public class Calender {
         //setting the settingPanel, which include change size, change color,
         JPanel settingPanel = new JPanel();
 
-        //Hi victoria, this need to be fixed. it's not working rn.
-        settingPanel.setPreferredSize(new Dimension(550, 100));
+        JButton setSize=new JButton("Set Size");
+        JButton setColor=new JButton("Set Color");
+
+        settingPanel.add(setSize);
+        settingPanel.add(setColor);
+
+
+       settingPanel.setSize(1200, 50);
 
 
         //setting the monthPanel, the add to frame line is at the bottom
@@ -59,7 +68,7 @@ public class Calender {
 
         frame.add(settingPanel,BorderLayout.NORTH);
         frame.add(monthPanel,BorderLayout.SOUTH);
-        frame.setSize(1000, 800);
+        frame.setSize(1400, 600);
         frame.setVisible(true);
 
 
