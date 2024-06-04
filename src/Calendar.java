@@ -233,7 +233,7 @@ public class Calendar implements ActionListener {
         if (ae.getActionCommand().equals("Set Color")) {
             System.out.println("set color pressed");
             //String wantedColor = JOptionPane.showInputDialog(frame,"Enter color");
-            String str=JOptionPane.showInputDialog(frame,"Enter inputs separated by spaces");
+            String str=JOptionPane.showInputDialog(frame,"Enter inputs separated by spaces like this: 20 100 255");
             String [] stringArray = str.split(" ");
             int[] colorIntArray = new int[3];
 
